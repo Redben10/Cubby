@@ -6,88 +6,95 @@
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="monetag" content="e031f9076a84a50e8f6c0eac05112c91" />
     <link rel="shortcut icon" id="tab-favicon" href="favicon.png" />
-    <title id="tab-title">Home</title>
+    <title id="t">Home</title>
     <link rel="stylesheet" href="/assets/css/global.css?v=6" />
-    <link rel="stylesheet" href="/assets/css/tabs.css?v=4" />
-    <script src="assets/js/fa.js" defer></script>
+    <link rel="stylesheet" href="/assets/css/t.css?v=02" />
+    <script src="assets/js/f.js"></script>
     <script>
-      // Lock keyboard escape key when resizing
-      window.addEventListener("resize", () => {
-        navigator.keyboard.lock(["Escape"]);
-      });
+      window.addEventListener("resize", navigator.keyboard.lock(["Escape"]));
     </script>
   </head>
-  <body
-    class="bg-gradient-to-bg-base-100 text-gray-100 relative overflow-auto"
-    onload="SplashT()"
-  >
-    <!-- Navbar -->
-    <nav class="navbar bg-base-100 p-4 shadow-lg sticky top-0 z-10">
-      <div class="container mx-auto flex justify-between items-center">
-        <div class="navbar-start">
-          <h1 class="text-primary font-orbitron text-2xl">Void Games</h1>
+  <body id="no">
+    <nav class="nav" id="right-side-nav">
+      <ul id="tab-list"></ul>
+      <button title="add-tab" id="add-tab">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </nav>
+    <div class="nav-bar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <button
+            title="Home Page"
+            id="home-page"
+            class="nav-button"
+            onclick="Home()"
+          >
+            <i class="fa-solid fa-house"></i>
+          </button>
+          <button title="Back Arrow" class="nav-button" onclick="goBack()">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <button
+            title="Forward Arrow"
+            class="nav-button"
+            onclick="goForward()"
+          >
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <button title="Reload" onclick="reload()" class="nav-button">
+            <i class="fa-solid fa-rotate-right"></i>
+          </button>
+          <form id="fv" class="navpost" method="POST">
+            <input
+              id="iv"
+              class="bar"
+              placeholder="Search or enter a new URL"
+              type="text"
+            />
+          </form>
         </div>
-        <div class="navbar-center hidden sm:flex">
-          <ul class="menu menu-horizontal gap-4">
-            <li><a href="" class="btn btn-outline border-2 btn-primary">Home</a></li>
-            <li><a href="games.html" class="btn btn-outline border-2 btn-secondary">Games</a></li>
-            <li><a href="apps.html" class="btn btn-outline border-2 btn-accent">Apps</a></li>
-          </ul>
-        </div>
-        <div class="navbar-end flex items-center gap-4">
-          <a class="btn btn-primary flex items-center gap-2">
-            <i class="fa-solid fa-search"></i>
-          </a>
-          <div class="dropdown dropdown-end sm:hidden">
-            <button tabindex="0" class="btn btn-ghost">
-              <i class="fa-solid fa-bars text-xl"></i>
-            </button>
-            <ul
-              tabindex="0"
-              class="dropdown-content menu bg-base-200 p-4 rounded-box shadow w-40 gap-2"
-            >
-              <li><a href="">Home</a></li>
-              <li><a href="games.html">Games</a></li>
-              <li><a href="apps.html">Apps</a></li>
-            </ul>
-          </div>
-          <label class="swap swap-rotate">
-            <input type="checkbox" class="theme-controller" value="dark" />
-            <svg
-              class="swap-off h-6 w-6 fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"
-              />
-            </svg>
-            <svg
-              class="swap-on h-6 w-6 fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"
-              />
-            </svg>
-          </label>
+        <div class="nav-right">
+          <button
+            title="Fullscreen"
+            id="fullscreen-button"
+            class="nav-button nav-btn-right"
+            onclick="FS()"
+          >
+            <i class="fa-solid fa-expand"></i>
+          </button>
+          <button
+            title="Window Popout"
+            id="popout-button"
+            class="nav-button nav-btn-right"
+            onclick="popout()"
+          >
+            <i class="fa-solid fa-up-right-from-square"></i>
+          </button>
+          <button
+            title="Inspect"
+            class="nav-button nav-btn-right"
+            onclick="eToggle()"
+          >
+            <i class="fa-solid fa-code"></i>
+          </button>
+          <button
+            title="Tabs"
+            id="tabs-button"
+            class="nav-button nav-btn-right"
+          >
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+          </button>
         </div>
       </div>
-    </nav>
-
-    <!-- Content -->
-    <div class="iframe-container" id="iframe-container"></div>
-
-    <!-- Scripts -->
-    <script src="assets/js/tabs.js?v=58" defer></script>
-    <script src="assets/-uv/bundle.js?v=6-17-2024" defer></script>
-    <script src="assets/-uv/config.js?v=6-17-2024" defer></script>
-    <script src="/assets/js/main.js?v=02" defer></script>
-
-    <!-- Analytics -->
+    </div>
+    <div class="frame-container" id="frame-container"></div>
+    <script src="assets/js/t.js?v=03"></script>
+    <script src="./assets/ultra/bundle.js?v=10-02-2024"></script>
+    <script src="./assets/ultra/config.js?v=10-02-2024"></script>
+    <script src="/assets/js/mv.js?v=003"></script>
+    <!-- DO NOT REMOVE-->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-WKJQ5QHQTJ"
@@ -98,7 +105,9 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
+
       gtag("config", "G-WKJQ5QHQTJ");
     </script>
+    <!-- DO NOT REMOVE-->
   </body>
 </html>
