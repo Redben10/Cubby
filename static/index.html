@@ -10,6 +10,26 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://fonts.cdnfonts.com/css/orbitron" rel="stylesheet">
   <title>Interstellar</title>
+  <style>
+  .main-search {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    background-color: #1f2937; /* Tailwind's bg-gray-800 equivalent */
+    color: #f3f4f6; /* Tailwind's text-gray-100 equivalent */
+    font-size: 16px;
+  }
+
+  .main-search:focus {
+    border-color: #38bdf8; /* Tailwind's border-sky-400 equivalent */
+    background-color: #111827; /* Tailwind's bg-gray-900 equivalent */
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.6); /* Subtle glow effect */
+  }
+</style>
 </head>
 <body class="bg-gradient-to-bg-base-100 text-gray-100 relative overflow-auto" onload="SplashT">
   <nav class="navbar bg-base-100 p-4 shadow-lg sticky top-0 z-10">
@@ -74,7 +94,7 @@
 
   <footer class="footer items-center p-4 bg-base-300 text-base-content">
     <div class="items-center grid-flow-col">
-      <p>Copyright © 2025 Interstellar. All rights reserved.</p>
+      <p>Copyright © 2025 Void Games All rights reserved.</p>
     </div>
     <div class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
       <a><i class="fa-brands fa-facebook text-lg"></i></a>
